@@ -73,3 +73,8 @@ Create a CDE Airflow Job with the necessary dependencies.
 
 %cde job run --name my_pipeline
 ```
+
+## References:
+
+* Creating an Airflow pipeline with custom files using CDE CLI: https://docs.cloudera.com/data-engineering/cloud/orchestrate-workflows/topics/cde-cli-create-custom-pipeline.html
+* Creating a custom Airflow Python environment: https://docs.cloudera.com/data-engineering/1.5.3/orchestrate-workflows/topics/cde-custom-python-airflow.html
