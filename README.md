@@ -23,6 +23,12 @@ Create pipeline resource and upload Airflow DAG to it.
 
 %cde resource upload --name my_pipeline_resource --local-path code/mydag.py
 
+%cde resource upload --name my_pipeline_resource --local-path resources/utils.py
+```
+
+Allow a minute or two for the resource to finish building. You can check status with the describe command. Move on once the status changes to  "ready":
+
+```
 % cde resource describe --name airflow_pyth_resource                                        
 {
   "name": "airflow_pyth_resource",
@@ -63,7 +69,7 @@ cde airflow activate-pyenv --pyenv-resource-name airflow_pyth_resource
 Create a CDE Airflow Job with the necessary dependencies.
 
 ```
-%cde job create --name my_pipeline --type airflow --dag-file mydag.py --mount-1-resource my_pipeline_resource --airflow-file-mount-1-resource my_file_resource --pyenv-resource-name airflow_pyth_resource
+%cde job create --name my_pipeline --type airflow --dag-file mydag.py --mount-1-resource my_pipeline_resource --airflow-file-mount-1-resource myYamlFiles
 
 %cde job run --name my_pipeline
 ```

@@ -51,6 +51,8 @@ try:
 except ImportError:
     from yaml import Loader, Dumper
 
+from utils import _my_parse_yaml
+
 myResourceFile = "/app/mount/sample.yaml"
 username = "pdefusco_051324"
 
@@ -80,13 +82,9 @@ start = DummyOperator(
     dag=python_env_dag
 )
 
-#Custom Python Method
-def _parse_yaml(document):
-    print(yaml.load(document, Loader=Loader))
-
 parse_yaml = PythonOperator(
     task_id="parse_yaml",
-    python_callable=_parse_yaml,
+    python_callable=_my_parse_yaml,
     op_kwargs={'document': myResourceFile},
     dag=python_env_dag
 )
